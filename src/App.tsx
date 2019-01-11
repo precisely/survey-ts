@@ -1,48 +1,20 @@
 import * as React from 'react';
 import * as Survey from 'survey-react';
-// import * as Survey from './survey-react/survey.react';
-// import * as Survey from 'surveyjs/src/survey';
-// import * as ReactSurvey from 'surveyjs/src/react/reactSurvey';
-//var Survey = import('surveyjs/src/survey');
-
 
 import './App.css';
 
 
 class App extends React.Component {
 
-  surveyJson1: {
+  surveyJson: {
     elements: [
       { type: 'text', name: 'customerName', title: 'What is your name?', isRequired: true}
     ]
   };
 
-  surveyJson2: {
-    title: "Test title",
-    pages: [
-      {
-        name: "page1", 
-        elements: [
-          { type: "text", name: "question1" }
-        ]
-      }]
-  };
-
-  onSurveyComplete(survey: any) {
-    console.log(survey);
-  }
-
-  onValueChanged(result: any) {
-    console.log(result);
-  }
-
-  nothing(args: any) {
-    console.log('nothing called');
-  }
-
   public render() {
     // FIXME: Maybe the problem is SurveyModel is the wrong object?
-    const model = new Survey.ReactSurveyModel(this.surveyJson2);
+    const model = new Survey.ReactSurveyModel(this.surveyJson);
     return (
       <div className="App">
         <header className="App-header">
@@ -54,15 +26,7 @@ class App extends React.Component {
         <div>
           <h2>Survey Test</h2>
           The survey test will be here:
-          {/*
-              <Survey.Survey model={model}
-              doAfterRenderSurvey={this.nothing}
-              onComplete={this.onSurveyComplete}
-              onValueChanged={this.onValueChanged} />
-            */}
-          <Survey.Survey model={model}
-                         doAfterRenderSurvey={this.nothing} />
-          {/* <Survey.Survey json={this.surveyJson1} /> */}
+          <Survey.Survey model={model} />
         </div>
       </div>
     );
