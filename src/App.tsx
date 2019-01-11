@@ -6,15 +6,16 @@ import './App.css';
 
 class App extends React.Component {
 
-  surveyJson: {
-    elements: [
-      { type: 'text', name: 'customerName', title: 'What is your name?', isRequired: true}
-    ]
-  };
-
   public render() {
-    // FIXME: Maybe the problem is SurveyModel is the wrong object?
-    const model = new Survey.ReactSurveyModel(this.surveyJson);
+
+    const surveyJson = {
+      elements: [
+        { type: 'text', name: 'customerName', title: 'What is your name?', isRequired: true}
+      ]
+    };
+
+    const model = new Survey.ReactSurveyModel(surveyJson);
+
     return (
       <div className="App">
         <header className="App-header">
@@ -30,6 +31,7 @@ class App extends React.Component {
         </div>
       </div>
     );
+
   }
 
 }
